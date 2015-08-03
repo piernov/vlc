@@ -67,8 +67,8 @@ struct filter_sys_t {
     atomic_bool started;
 
     /* statistics */
-    int output_in_transit;
-    int input_in_transit;
+    int _Atomic output_in_transit;
+    int _Atomic input_in_transit;
 };
 
 static void control_port_cb(MMAL_PORT_T *port, MMAL_BUFFER_HEADER_T *buffer);

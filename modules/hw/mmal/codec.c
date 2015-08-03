@@ -30,6 +30,7 @@
 #include <vlc_plugin.h>
 #include <vlc_codec.h>
 #include <vlc_threads.h>
+#include <vlc_atomic.h>
 
 #include <bcm_host.h>
 #include <interface/mmal/mmal.h>
@@ -78,8 +79,8 @@ struct decoder_sys_t {
     bool b_progressive;
 
     /* statistics */
-    int output_in_transit;
-    int input_in_transit;
+    int _Atomic output_in_transit;
+    int _Atomic input_in_transit;
     atomic_bool started;
 };
 

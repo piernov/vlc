@@ -32,6 +32,7 @@
 #include <vlc_plugin.h>
 #include <vlc_threads.h>
 #include <vlc_vout_display.h>
+#include <vlc_atomic.h>
 
 #include "mmal_picture.h"
 
@@ -107,7 +108,7 @@ struct vout_display_sys_t {
     int i_planes; /* Number of actually used planes, 1 for opaque, 3 for i420 */
 
     uint32_t buffer_size; /* size of actual mmal buffers */
-    int buffers_in_transit; /* number of buffers currently pushed to mmal component */
+    int _Atomic buffers_in_transit; /* number of buffers currently pushed to mmal component */
     unsigned num_buffers; /* number of buffers allocated at mmal port */
 
     DISPMANX_DISPLAY_HANDLE_T dmx_handle;
